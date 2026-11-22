@@ -2,12 +2,16 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
 <title>درع</title>
 <link rel="icon" href="icon.svg" type="image/svg+xml">
 <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<meta name="theme-color" content="#3d86c9">
+<meta name="theme-color" content="#4a9cc4">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="درع">
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
 <script>try{var t=localStorage.getItem("theme")||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light");document.documentElement.dataset.theme=t;document.documentElement.style.colorScheme=t}catch(e){document.documentElement.dataset.theme="light"}</script>
 <style>
@@ -64,6 +68,40 @@ nav .tab[aria-current=true] svg{transform:translateY(-3px) scale(1.12)}
 .fab svg{width:32px;height:32px;transition:transform .7s cubic-bezier(.3,1.5,.5,1)}
 .fab[aria-current=true]{transform:translateY(-3px)}
 .fab[aria-current=true] svg{transform:rotate(135deg)}
+:root{--bg:#f1f5fb;--ink:#1a2238;--muted:#6b7491;--accent:#4a9cc4;--soft:#e6eef8;--line:#e3e8f1;--danger:#d64545;--grad:linear-gradient(135deg,#67cde8,#4796bf);--pgrad:linear-gradient(135deg,#e47db3,#c93a79);--glow:rgba(74,156,196,.3);--green:#2f7d57;--gbg:#e1f3e8}
+:root[data-theme=dark]{--bg:#0d1424;--card:#151e33;--ink:#eaf0ff;--muted:#93a0c0;--accent:#67cde8;--soft:#1c2842;--line:#24314f;--danger:#ff8a80;--glow:rgba(103,205,232,.25);--green:#6fdca0;--gbg:#143026;--ad-bg:#16243a;--ad-ink:#e8f3ff}
+html{-webkit-text-size-adjust:100%;touch-action:pan-x pan-y}
+body{overflow-x:hidden;min-height:100dvh}
+.wrap{max-width:680px}
+nav{max-width:680px;margin-inline:auto}
+.ad p{font-size:clamp(17px,4.8vw,22px)}
+.ic-card{position:relative;overflow:hidden;padding:24px 18px 18px;border-radius:24px}
+.ic-card::before{content:"";position:absolute;inset:0 0 auto 0;height:6px;background:var(--g)}
+.ic-card.blue{--g:var(--grad);--gl:rgba(74,156,196,.32);--ring:rgba(103,205,232,.28)}
+.ic-card.pink{--g:var(--pgrad);--gl:rgba(201,58,121,.3);--ring:rgba(228,125,179,.28)}
+.ic-head{display:flex;align-items:center;gap:14px}
+.ic-box{flex:none;width:64px;height:64px;border-radius:20px;background:var(--g);display:grid;place-items:center;box-shadow:0 0 0 6px var(--ring),0 10px 20px var(--gl)}
+.ic-box svg{width:30px;height:30px}
+.ic-text{flex:1;min-width:0}
+.ic-text b{display:block;font-size:19px;line-height:1.4}
+.ic-text span{display:block;color:var(--muted);font-size:15px;line-height:1.6}
+.chip{flex:none;display:inline-flex;align-items:center;gap:8px;background:var(--soft);padding:8px 16px;border-radius:999px;font-weight:700;font-size:15px}
+.chip i{width:9px;height:9px;border-radius:50%;background:var(--muted)}
+.chip.on i{background:#67cde8}
+.ok{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:16px;background:var(--gbg);color:var(--green);border-radius:18px;padding:16px;font-weight:700}
+.ok svg{width:24px;height:24px}
+.hint{margin:14px 0 0;background:var(--soft);border-radius:14px;padding:12px 14px;font-size:15px}
+.btn.pink{background:var(--pgrad);box-shadow:0 8px 18px rgba(201,58,121,.3)}
+.btn.ghost{background:var(--card);color:var(--ink);border:1.5px solid var(--line);box-shadow:none;margin:0}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.prev{display:flex;align-items:center;gap:14px;margin:16px 0;border:1.5px solid var(--line);background:var(--bg);border-radius:20px;padding:14px}
+.prev img{width:64px;height:64px;border-radius:16px;flex:none}
+.prev b{display:block;font-size:19px}
+.prev span{color:var(--muted);font-size:15px}
+.toast{position:fixed;left:50%;bottom:calc(112px + env(safe-area-inset-bottom,0px));transform:translate(-50%,20px);background:var(--ink);color:var(--card);padding:10px 18px;border-radius:999px;font-size:15px;opacity:0;pointer-events:none;transition:opacity .3s,transform .3s;z-index:9;white-space:nowrap}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+@media (max-width:380px){body{font-size:16px}nav .tab{font-size:12px}.ad{min-height:180px}.chip{padding:6px 12px;font-size:14px}.ic-box{width:56px;height:56px}.ic-text b,.prev b{font-size:17px}}
+@media (min-width:700px){h1{font-size:32px}.ad{min-height:240px}.ad svg{max-width:220px}}
 a:focus-visible,button:focus-visible,label:focus-within{outline:3px solid var(--accent);outline-offset:2px}
 [hidden]{display:none!important}
 @keyframes up{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
@@ -122,6 +160,25 @@ a:focus-visible,button:focus-visible,label:focus-within{outline:3px solid var(--
 
 <section id="settings" hidden>
 <h2 data-i="st"></h2>
+<div class="card ic-card blue">
+<div class="ic-head">
+<div class="ic-box"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7.5 10.5 12 15l4.5-4.5M5 20h14"/></svg></div>
+<div class="ic-text"><b data-i="ins_t"></b><span id="insD" data-i="ins_d"></span></div>
+<div class="chip" id="chip"><span id="chipT" data-i="chip_off"></span><i></i></div>
+</div>
+<p class="hint" id="hint" hidden></p>
+<button class="btn" id="insBtn" style="margin:16px 0 0" data-i="ins_btn"></button>
+<div class="ok" id="insOk" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span data-i="ins_done"></span></div>
+</div>
+<div class="card ic-card pink">
+<div class="ic-head">
+<div class="ic-box"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="2.6"/><circle cx="6" cy="12" r="2.6"/><circle cx="18" cy="19" r="2.6"/><path d="m8.3 10.8 7.4-4.3M8.3 13.2l7.4 4.3"/></svg></div>
+<div class="ic-text"><b data-i="sh_t"></b><span data-i="sh_d"></span></div>
+</div>
+<div class="prev"><img src="icon-512.png" alt="" onerror="this.style.display='none'"><div><b data-i="app"></b><span data-i="sub"></span></div></div>
+<button class="btn pink" id="shBtn" data-i="sh_btn"></button>
+<div class="row2"><button class="btn ghost" id="shCopy" data-i="sh_copy"></button><button class="btn ghost" id="shWa" data-i="sh_wa"></button></div>
+</div>
 <div class="card"><p style="font-weight:700" data-i="th"></p>
 <div class="seg"><button data-theme="light" data-i="tl"></button><button data-theme="dark" data-i="td"></button></div></div>
 <div class="card"><p style="font-weight:700" data-i="lg"></p>
@@ -130,6 +187,7 @@ a:focus-visible,button:focus-visible,label:focus-within{outline:3px solid var(--
 </main>
 </div>
 
+<div class="toast" id="toast" role="status"></div>
 <nav>
 <button class="tab" data-t="home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11 12 4l8 7M6 10v10h12V10"/></svg><span data-i="n1"></span></button>
 <button class="tab" data-t="protect"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 5-3 8-7 10-4-2-7-5-7-10V6l7-3z"/></svg><span data-i="n2"></span></button>
@@ -147,14 +205,20 @@ key:"صورك تبقى على جوالك. الحماية تتم ببصمة رق�
 pt:"كيف تعمل الحماية",pp:"تُنشأ بصمة رقمية للصورة على جهازك، وتُرسل البصمة فقط إلى المنصات المشاركة. وإذا حاول أحد رفع صورة مطابقة، تحجبها المنصة.",pc:"اختر الخدمة حسب عمرك:",pa:"أنا 18 سنة فأكثر: افتح StopNCII",pm:"أنا أقل من 18 سنة: افتح Take It Down",pn:"هذا التطبيق لا يحجب الصور بنفسه. هو يوصلك للخدمتين الرسميتين اللتين تتعاونان مع المنصات.",
 et:"الأدلة",ep:"احفظ هنا لقطات الشاشة للمحادثات والتهديدات قبل حظر الحساب. تبقى داخل متصفحك على جهازك فقط، ولا تُرسل لأي خادم.",ea:"إضافة لقطات",empty:"لا توجد أدلة محفوظة. اضغط إضافة لقطات للبدء.",del:"حذف",conf:"حذف هذه اللقطة نهائياً؟",e1:"تعذر فتح مخزن الأدلة في هذا المتصفح. جرّب Safari أو Chrome بدون وضع التصفح الخاص.",e2:"تعذر حفظ اللقطات. تأكد أن التخزين متاح في المتصفح.",
 ht:"ماذا أفعل إذا هددني أحد",s1:"لا تدفع المبلغ ولا ترسل صوراً إضافية. الدفع لا يوقف الابتزاز غالباً.",s2:"لا تحذف المحادثة. صوّرها واحفظها في تبويب الأدلة.",s3:"بعد حفظ الأدلة، احظر الحساب وبلّغ عنه داخل المنصة.",s4:"فعّل حماية صورك من تبويب الحماية.",s5:"تواصل مع الجهة الأمنية المختصة في بلدك.",s6:"تكلم مع شخص تثق فيه. أنت لست المخطئ، والمبتز هو المخطئ.",
-st:"الإعدادات",th:"المظهر",tl:"نهاري",td:"ليلي",lg:"اللغة"},
+st:"الإعدادات",th:"المظهر",tl:"نهاري",td:"ليلي",lg:"اللغة",
+ins_t:"تثبيت التطبيق",ins_d:"ثبّت التطبيق على جهازك ليعمل بشكل مستقل",ins_d2:"التطبيق مثبّت على جهازك ويعمل كتطبيق مستقل",chip_on:"مثبّت",chip_off:"غير مثبّت",ins_btn:"تثبيت التطبيق",ins_done:"مثبّت",
+hint_ios:"اضغط زر المشاركة في Safari، ثم اختر «إضافة إلى الشاشة الرئيسية».",hint_gen:"من قائمة المتصفح اختر «تثبيت التطبيق» أو «إضافة إلى الشاشة الرئيسية».",
+sh_t:"مشاركة التطبيق",sh_d:"انشر رابط التطبيق مع أصدقائك لمساعدتهم على الحماية",sh_btn:"مشاركة الرابط",sh_copy:"نسخ الرابط",sh_wa:"واتساب",copied:"تم نسخ الرابط",sh_txt:"جرّب تطبيق درع للحماية من الابتزاز بالصور"},
 en:{title:"Shield",app:"Shield",sub:"Protection from photo blackmail",n1:"Home",n2:"Protect",n3:"Evidence",n4:"What to do",
 a1:"You are not alone. Many people have been through this and moved past it. Help is available.",a2:"Screenshot the threats and save them before blocking the account. They are your evidence.",a3:"Do not pay the blackmailer or send more. Paying usually does not stop the threats.",a4:"Remember: everything you feel is valid. You are a victim of abuse, not the one at fault.",
 key:"Your photos stay on your phone. Protection works through a digital fingerprint, not a copy of the photo.",h1:"Protect your photos",d1:"Open the official service for your age",h2:"Save your evidence",d2:"Screenshots of chats and threats",h3:"What to do now",d3:"Six clear steps",
 pt:"How protection works",pp:"A digital fingerprint of the photo is created on your device, and only the fingerprint is sent to participating platforms. If someone tries to upload a matching image, the platform blocks it.",pc:"Choose the service for your age:",pa:"I am 18 or older: open StopNCII",pm:"I am under 18: open Take It Down",pn:"This app does not block photos itself. It takes you to the two official services that work with platforms.",
 et:"Evidence",ep:"Save screenshots of chats and threats here before blocking the account. They stay in your browser on your device and are never sent to a server.",ea:"Add screenshots",empty:"No evidence saved yet. Tap Add screenshots to start.",del:"Delete",conf:"Delete this screenshot permanently?",e1:"Evidence storage could not be opened in this browser. Try Safari or Chrome outside private mode.",e2:"Could not save the screenshots. Make sure browser storage is available.",
 ht:"What to do if someone threatens you",s1:"Do not pay and do not send more photos. Paying rarely stops blackmail.",s2:"Do not delete the chat. Screenshot it and save it in the Evidence tab.",s3:"After saving the evidence, block the account and report it on the platform.",s4:"Turn on photo protection from the Protect tab.",s5:"Contact the competent authorities in your country.",s6:"Talk to someone you trust. You are not at fault. The blackmailer is.",
-st:"Settings",th:"Appearance",tl:"Light",td:"Dark",lg:"Language"}};
+st:"Settings",th:"Appearance",tl:"Light",td:"Dark",lg:"Language",
+ins_t:"Install the app",ins_d:"Install the app on your device to run it standalone",ins_d2:"The app is installed on your device and runs standalone",chip_on:"Installed",chip_off:"Not installed",ins_btn:"Install the app",ins_done:"Installed",
+hint_ios:"Tap the Share button in Safari, then choose “Add to Home Screen”.",hint_gen:"From the browser menu choose “Install app” or “Add to Home Screen”.",
+sh_t:"Share the app",sh_d:"Share the app link with friends to help them stay protected",sh_btn:"Share the link",sh_copy:"Copy link",sh_wa:"WhatsApp",copied:"Link copied",sh_txt:"Try Shield, an app for protection from photo blackmail"}};
 const root=document.documentElement;
 let lang="ar",cur="home",ai=0,timer;
 try{lang=localStorage.getItem("lang")||"ar"}catch(e){}
@@ -263,8 +327,62 @@ view.addEventListener("pointerup",e=>{
 });
 view.addEventListener("pointercancel",()=>{x0=null;adStart()});
 
+const isIOS=/iphone|ipad|ipod/i.test(navigator.userAgent)||(navigator.platform==="MacIntel"&&navigator.maxTouchPoints>1);
+const standalone=()=>matchMedia("(display-mode: standalone)").matches||navigator.standalone===true;
+let dp=null;
+function tr(el,k){el.dataset.i=k;el.textContent=T[lang][k]}
+function updInstall(){
+  const on=standalone();
+  tr(document.getElementById("insD"),on?"ins_d2":"ins_d");
+  tr(document.getElementById("chipT"),on?"chip_on":"chip_off");
+  document.getElementById("chip").classList.toggle("on",on);
+  document.getElementById("insBtn").hidden=on;
+  document.getElementById("insOk").hidden=!on;
+  if(on)document.getElementById("hint").hidden=true;
+}
+window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();dp=e});
+window.addEventListener("appinstalled",()=>{dp=null;updInstall()});
+document.getElementById("insBtn").addEventListener("click",async()=>{
+  if(dp){dp.prompt();try{await dp.userChoice}catch(e){}dp=null;updInstall();return}
+  const h=document.getElementById("hint");
+  tr(h,isIOS?"hint_ios":"hint_gen");
+  h.hidden=false;
+});
+
+const link=location.protocol.startsWith("http")?location.origin+location.pathname:"https://a-makls.github.io/Shield/";
+const toastEl=document.getElementById("toast");
+let tt;
+function toast(k){
+  toastEl.textContent=T[lang][k];
+  toastEl.classList.add("show");
+  clearTimeout(tt);
+  tt=setTimeout(()=>toastEl.classList.remove("show"),2000);
+}
+async function copyLink(){
+  try{await navigator.clipboard.writeText(link)}
+  catch(e){
+    const ta=document.createElement("textarea");
+    ta.value=link;document.body.append(ta);ta.select();
+    try{document.execCommand("copy")}catch(_){}
+    ta.remove();
+  }
+  toast("copied");
+}
+document.getElementById("shBtn").addEventListener("click",async()=>{
+  if(navigator.share){try{await navigator.share({title:T[lang].app,text:T[lang].sh_txt,url:link})}catch(e){}}
+  else copyLink();
+});
+document.getElementById("shCopy").addEventListener("click",copyLink);
+document.getElementById("shWa").addEventListener("click",()=>{
+  window.open("https://wa.me/?text="+encodeURIComponent(T[lang].sh_txt+" "+link),"_blank","noopener");
+});
+
+["gesturestart","gesturechange","gestureend"].forEach(t=>document.addEventListener(t,e=>e.preventDefault()));
+if("serviceWorker" in navigator&&location.protocol.startsWith("http"))navigator.serviceWorker.register("sw.js").catch(()=>{});
+
 setTheme(root.dataset.theme);
 setLang(lang);
+updInstall();
 show("home");
 adStart();
 </script>
